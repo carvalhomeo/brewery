@@ -119,7 +119,7 @@ export default function Home() {
       }
 
       {scrollRef.current?.scrollTop! > scrollRef.current?.clientHeight! && 
-      <div className="fixed bottom-2 right-2 bg-blue-400 p-4 rounded-full flex justify-center items-center">
+      <div className="fixed bottom-2 right-2 bg-blue-400  p-4 rounded-full flex justify-center items-center">
         <a href="#top-content">
           <ArrowUp color="white"/>
         </a>
