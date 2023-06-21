@@ -35,7 +35,7 @@ const BeerSearch = ({ initialData }: BeerSearchProps) => {
             </div>
         </div>
 
-        <div className='overflow-scroll'>
+        <div className='overflow-scroll scroll-smooth'>
           <BeerList initialData={initialData} beerName={beerName} />
         </div>
     </>

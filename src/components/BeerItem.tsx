@@ -30,7 +30,7 @@ const BeerItem = ({ beer }: BeerItemProps) => {
     const allreadyInList = beerList.find(beer => beer.id === id)
 
     return (
-      <div className='relative flex flex-row justify-center items-center shadow bg-blue-100 p-4 rounded-xl gap-4 h-28'>
+      <div className='relative flex flex-row justify-center items-center shadow bg-blue-100 p-4 rounded-xl gap-4 h-28 sm:w-80 md:w-80 lg:w-80 xl:w-80'>
         
             <div className='relative h-20 w-5'>
                 {image_url && <Image src={image_url} alt={name} fill sizes='100vw' />}

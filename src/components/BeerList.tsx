@@ -41,8 +41,8 @@ const BeerList = ({ initialData, beerName }: BeerListProps) => {
     const beers: Beer[] = data?.pages.flatMap((page) => page) ?? initialData
 
     return (
-        <div >
-          <ul className='flex flex-col gap-4'>
+        <div>
+          <ul className='flex flex-col gap-4 justify-center sm:flex-row sm:flex-wrap'>
             {beers?.map((beer, index) => {
                 if(index === beers.length - 1) {
                     return <li key={beer.id} ref={ref}>
