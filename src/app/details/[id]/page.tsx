@@ -1,13 +1,17 @@
-'use client'
-
 import BeerDetails from "@/components/BeerDetails"
-import { selectedBeerAtom } from "@/context"
-import { useAtom } from "jotai"
+import { Beer } from "@/model"
+import { notFound } from "next/navigation"
 
-export default async function Details({params}: {params: {id: string}}) {
-    const [selectedBeer, setSelectedBeer] = useAtom(selectedBeerAtom)
+async function getData(id: number): Promise<Beer[]> {
+    const result = await fetch(`https://api.punkapi.com/v2/beers/${id}`)
+    if(!result.ok) {
+        notFound()	
+    }
+    return result.json()
+}
 
-    return (
-        <BeerDetails beer={selectedBeer} />
-    )
+export default async function Details({params: { id }}: {params: {id: number}}) {
+    const beer: Beer[] = await getData(id)
+
+    return beer.map(b => <BeerDetails key={b.id} beer={b} />)
 }

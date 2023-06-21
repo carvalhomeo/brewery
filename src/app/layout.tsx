@@ -1,3 +1,4 @@
+import Providers from '@/providers'
 import './globals.css'
 import { Inter } from 'next/font/google'
 import { twMerge } from 'tailwind-merge'
@@ -16,8 +17,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={twMerge("text-slate-900 antialiased light", inter.className)}>
-      <body className="min-h-screen antialiased bg-gradient-to-tl from-blue-200 to-white">
-        {children}
+      <body className="min-h-screen antialiased">
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   )

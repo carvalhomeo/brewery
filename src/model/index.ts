@@ -1,5 +1,5 @@
 export interface Beer {
-    id: string
+    id: number
     name: string
     tagline: string
     first_brewed: string

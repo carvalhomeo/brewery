@@ -1,28 +1,40 @@
+"use client"
+
 import React from 'react'
 import Image from 'next/image'
 import { MoveLeft } from 'lucide-react'
 import { useRouter } from 'next/navigation'
+import { Beer } from '@/model'
+import Link from 'next/link'
 
 interface BeerDetailsProps {
-    beer: any
+    beer: Beer
 }
 
 const BeerDetails = ({beer}: BeerDetailsProps) => {
   const {back} = useRouter()
-
+  const {name, image_url, tagline, description, first_brewed} = beer
+ 
   return (
-    <div className='p-4 gap-4 flex flex-col items-center sm:flex-row md:flex-row lg:flex-row h-screen'>
-      <div className='flex flex-row border-2 border-blue-600'>
-        <MoveLeft onClick={back} className='cursor-pointer border-2 border-red-600'/>
-        <h1 className="border-2 border-red-600">{beer.name}</h1>
+    <div className='h-screen p-8 flex flex-col gap-4'>
+      
+      <div className='flex flex-row gap-8 items-center'>
+        <Link href="/" className='bg-blue-400 p-2 rounded-full h-10 w-10 flex justify-center items-center'>
+          <MoveLeft color="white" />
+        </Link>
+        <div>
+          <h1 className="text-xl">{name}</h1>
+          <h2 className='text-sm'>{tagline}</h2>
+          <h3 className='text-xs'>{first_brewed}</h3>
+        </div>
       </div>
 
-      <div className='relative basis-2/3 w-1/3 sm:basis-2/5 md:basis-1/5 lg:basis-1/5'>
-        <Image alt={beer.name} src={beer.image_url} fill />
+      <div className='relative basis-full'>
+        {image_url && <Image alt={name} src={image_url} fill sizes='100vw' style={{objectFit: "contain"}} />}
       </div>
 
-      <div className='basis-4/5 sm:basis-4/5 md:basis-4/5 lg:basis-4/5'>
-        <p>{beer.description}</p>
+      <div className=''>
+        <p className='text-base'>{description}</p>
       </div>
     </div>
   )

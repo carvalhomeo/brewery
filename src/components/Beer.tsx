@@ -27,9 +27,9 @@ const Beer = ({ beer }: BeerProps) => {
     >
       <div className='flex flex-col gap-4 h-full p-4'>
         <div className="relative h-screen">
-            <Image alt={name} src={imageUrl} fill style={{objectFit: "contain"}} />
+            {imageUrl && <Image alt={name} src={imageUrl} fill style={{objectFit: "contain"}} />}
         </div>
-        <h1 className="text-center font-bold text-4xl">{name}</h1>
+        <h1 className="text-center font-bold text-3xl">{name}</h1>
       </div>
     </Link>
   )
