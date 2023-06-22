@@ -27,8 +27,14 @@ export default function Home() {
   return (
     <main className="flex h-screen flex-col gap-4 bg-gradient-to-tl from-blue-200 to-white p-8">
       <div className="flex flex-row items-center justify-center">
-        <h1 className="text-center text-4xl font-bold">Beer Collection</h1>
+        <h1
+          data-testid="beer-collection-title"
+          className="text-center text-4xl font-bold"
+        >
+          Beer Collection
+        </h1>
         <button
+          data-testid="add-btn"
           onClick={handleAdd}
           className="fixed bottom-2 right-2 flex items-center justify-center rounded-full bg-blue-400 p-4"
         >

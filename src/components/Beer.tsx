@@ -34,7 +34,9 @@ const Beer = ({ beer, scrollRef, index }: BeerProps) => {
             <Image alt={name} src={imageUrl} fill className="object-contain" />
           )}
         </div>
-        <h1 className="text-center text-3xl font-bold">{name}</h1>
+        <h1 data-testid="beer-name" className="text-center text-3xl font-bold">
+          {name}
+        </h1>
       </div>
     </Link>
   )

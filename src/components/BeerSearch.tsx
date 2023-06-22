@@ -19,6 +19,7 @@ const BeerSearch = ({ initialData }: BeerSearchProps) => {
     <>
       <div className="sticky flex flex-row items-center justify-between gap-4">
         <Link
+          data-testid="go-back-btn"
           href="/"
           className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-400 p-2"
         >

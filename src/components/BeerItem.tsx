@@ -4,7 +4,7 @@ import { Beer } from '@/model'
 import React from 'react'
 import Image from 'next/image'
 import { Minus, Plus } from 'lucide-react'
-import { shortenText } from '@/utils'
+import { shortenText } from '@/utils/helpers'
 import { useAtom } from 'jotai'
 import { beerListAtom } from '@/context'
 
@@ -56,6 +56,7 @@ const BeerItem = ({ beer }: BeerItemProps) => {
         </button>
       ) : (
         <button
+          data-testid={`add-beer-${id}`}
           className="h-7 place-content-center rounded-full"
           onClick={handleAddBeer}
         >
