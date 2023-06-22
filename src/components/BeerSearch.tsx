@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import React, { useState } from 'react'
 import BeerList from './BeerList'
@@ -8,36 +8,42 @@ import { MoveLeft, Search, X } from 'lucide-react'
 import { useDebouncedValue } from '@mantine/hooks'
 
 interface BeerSearchProps {
-    initialData: Beer[]
+  initialData: Beer[]
 }
 
 const BeerSearch = ({ initialData }: BeerSearchProps) => {
-  const [value, setValue] = useState<string>("");
-  const [beerName] = useDebouncedValue(value, 200);
+  const [value, setValue] = useState<string>('')
+  const [beerName] = useDebouncedValue(value, 200)
 
   return (
     <>
-        <div className='sticky flex flex-row items-center justify-between gap-4'>
-            <Link href="/" className='bg-blue-400 p-2 rounded-full h-10 w-10 flex justify-center items-center'>
-                <MoveLeft color="white" />
-            </Link>
-            <div className='flex flex-row gap-2 justify-between items-center p-1 border-2 border-blue-300 basis-full rounded-full'>
-              <Search width={20} height={20} className='ml-2' />
-              <input 
-                type="text" 
-                className='basis-full focus:outline-none' 
-                value={value} 
-                onChange={(e) => setValue(e.target.value)}
-              />
-              <button className='mr-2 flex justify-center items-center' onClick={() => setValue("")}>
-                <X width={20} height={20} />
-              </button>
-            </div>
+      <div className="sticky flex flex-row items-center justify-between gap-4">
+        <Link
+          href="/"
+          className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-400 p-2"
+        >
+          <MoveLeft color="white" />
+        </Link>
+        <div className="flex basis-full flex-row items-center justify-between gap-2 rounded-full border-2 border-blue-300 p-1">
+          <Search width={20} height={20} className="ml-2" />
+          <input
+            type="text"
+            className="basis-full focus:outline-none"
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+          />
+          <button
+            className="mr-2 flex items-center justify-center"
+            onClick={() => setValue('')}
+          >
+            <X width={20} height={20} />
+          </button>
         </div>
+      </div>
 
-        <div className='overflow-scroll scroll-smooth'>
-          <BeerList initialData={initialData} beerName={beerName} />
-        </div>
+      <div className="overflow-scroll scroll-smooth">
+        <BeerList initialData={initialData} beerName={beerName} />
+      </div>
     </>
   )
 }

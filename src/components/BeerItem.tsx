@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import { Beer } from '@/model'
 import React from 'react'
@@ -9,55 +9,61 @@ import { useAtom } from 'jotai'
 import { beerListAtom } from '@/context'
 
 interface BeerItemProps {
-    beer: Beer
+  beer: Beer
 }
 
 const BeerItem = ({ beer }: BeerItemProps) => {
-    const {id, name, image_url, tagline} = beer;
-    const [beerList, setBeerList] = useAtom(beerListAtom)
+  const { id, name, image_url: imageUrl, tagline } = beer
+  const [beerList, setBeerList] = useAtom(beerListAtom)
 
-    const formattedName = shortenText(name)
-    const formattedTagline = shortenText(tagline, 20)
+  const formattedName = shortenText(name)
+  const formattedTagline = shortenText(tagline, 20)
 
-    const handleAddBeer = () => {
-        setBeerList(oldState => [...oldState, beer])
-    }
-    
-    const handleRemoveBeer = () => {
-        setBeerList(oldState => oldState.filter(beer => beer.id !== id))
-    }
+  const handleAddBeer = () => {
+    setBeerList((oldState) => [...oldState, beer])
+  }
 
-    const allreadyInList = beerList.find(beer => beer.id === id)
+  const handleRemoveBeer = () => {
+    setBeerList((oldState) => oldState.filter((beer) => beer.id !== id))
+  }
 
-    return (
-      <div className='relative flex flex-row justify-center items-center shadow bg-blue-100 p-4 rounded-xl gap-4 h-28 sm:w-80 md:w-80 lg:w-80 xl:w-80'>
-        
-            <div className='relative h-20 w-5'>
-                {image_url && <Image src={image_url} alt={name} fill sizes='100vw' />}
-            </div>
+  const allreadyInList = beerList.find((beer) => beer.id === id)
 
-            <div className="flex-auto">
-                <h1 className='text-lg font-bold'>{formattedName}</h1>
-                <h2 className='text-md'>{formattedTagline}</h2>
-            </div>
-
-            {
-            allreadyInList ?
-                <button 
-                className="rounded-full h-7 place-content-center" 
-                onClick={handleRemoveBeer}
-                >
-                    <Minus className='text-red-600' />
-                </button> :
-                <button 
-                    className="rounded-full h-7 place-content-center" 
-                    onClick={handleAddBeer}
-                >
-                    <Plus className='text-green-600' />
-                </button>
-            }
+  return (
+    <div className="relative flex h-28 flex-row items-center justify-center gap-4 rounded-xl bg-blue-100 p-4 shadow sm:w-80 md:w-80 lg:w-80 xl:w-80">
+      <div className="relative h-20 w-5">
+        {imageUrl && (
+          <Image
+            src={imageUrl}
+            alt={name}
+            fill
+            sizes="(max-width: 768px) 100vw"
+          />
+        )}
       </div>
-    )
+
+      <div className="flex-auto">
+        <h1 className="text-lg font-bold">{formattedName}</h1>
+        <h2 className="text-md">{formattedTagline}</h2>
+      </div>
+
+      {allreadyInList ? (
+        <button
+          className="h-7 place-content-center rounded-full"
+          onClick={handleRemoveBeer}
+        >
+          <Minus className="text-red-600" />
+        </button>
+      ) : (
+        <button
+          className="h-7 place-content-center rounded-full"
+          onClick={handleAddBeer}
+        >
+          <Plus className="text-green-600" />
+        </button>
+      )}
+    </div>
+  )
 }
 
 export default BeerItem

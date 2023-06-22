@@ -1,35 +1,40 @@
 'use client'
 
 import { selectedBeerAtom } from '@/context'
-import { Beer } from '@/model'
+import { Beer as BeerModel } from '@/model'
 import { useAtom } from 'jotai'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Ref } from 'react'
 
 interface BeerProps {
-  beer: Beer
+  beer: BeerModel
+  scrollRef: Ref<HTMLAnchorElement>
+  index: number
 }
 
-const Beer = ({ beer }: BeerProps) => {
-  const {id, name, image_url: imageUrl} = beer
+const Beer = ({ beer, scrollRef, index }: BeerProps) => {
+  const { id, name, image_url: imageUrl } = beer
   const [, setsSlectedBeerAtom] = useAtom(selectedBeerAtom)
 
   const handleSelectBeer = () => {
     setsSlectedBeerAtom(beer)
   }
-  
+
   return (
     <Link
-      className='cursor-pointer snap-start h-full' 
-      href={`details/${id}`} 
+      className="h-full cursor-pointer snap-start"
+      href={`details/${id}`}
       onClick={handleSelectBeer}
-      id="top-content"
+      ref={index === 0 ? scrollRef : null}
     >
-      <div className='flex flex-col gap-4 h-full p-4'>
+      <div className="flex h-full flex-col gap-4 p-4">
         <div className="relative h-screen">
-            {imageUrl && <Image alt={name} src={imageUrl} fill style={{objectFit: "contain"}} />}
+          {imageUrl && (
+            <Image alt={name} src={imageUrl} fill className="object-contain" />
+          )}
         </div>
-        <h1 className="text-center font-bold text-3xl">{name}</h1>
+        <h1 className="text-center text-3xl font-bold">{name}</h1>
       </div>
     </Link>
   )

@@ -1,38 +1,54 @@
-"use client"
+'use client'
 
-import React from "react"
-import Image from "next/image"
-import { MoveLeft } from "lucide-react"
-import { Beer } from "@/model"
-import Link from "next/link"
+import React from 'react'
+import Image from 'next/image'
+import { MoveLeft } from 'lucide-react'
+import { Beer } from '@/model'
+import Link from 'next/link'
 
 interface BeerDetailsProps {
-    beer: Beer
+  beer: Beer
 }
 
-const BeerDetails = ({beer}: BeerDetailsProps) => {
-  const {name, image_url, tagline, description, first_brewed} = beer
- 
+const BeerDetails = ({ beer }: BeerDetailsProps) => {
+  const {
+    name,
+    image_url: imageUrl,
+    tagline,
+    description,
+    first_brewed: firstBrewed,
+  } = beer
+
   return (
-    <div className="h-screen p-8 flex flex-col gap-4 bg-gradient-to-tl from-blue-200 to-white">
-      
-      <div className="flex flex-row gap-8 items-center">
-        <Link href="/" className="bg-blue-400 p-2 rounded-full h-10 w-10 flex justify-center items-center">
+    <div className="flex h-screen flex-col gap-4 bg-gradient-to-tl from-blue-200 to-white p-8">
+      <div className="flex flex-row items-center gap-8">
+        <Link
+          href="/"
+          className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-400 p-2"
+        >
           <MoveLeft color="white" />
         </Link>
-        <div className="sm:basis-full sm:flex sm:flex-col sm:justify-center sm:items-center">
+        <div className="sm:flex sm:basis-full sm:flex-col sm:items-center sm:justify-center">
           <h1 className="text-xl">{name}</h1>
           <h2 className="text-sm">{tagline}</h2>
-          <h3 className="text-xs">{first_brewed}</h3>
+          <h3 className="text-xs">{firstBrewed}</h3>
         </div>
       </div>
 
-      <div className="relative h-full flex flex-col gap-4 sm:flex-row sm:items-center sm:p-8">
-        <div className="relative basis-full h-4/5 sm:h-full">
-          {image_url && <Image alt={name} src={image_url} fill sizes="100vw" style={{objectFit: "contain"}} />}
+      <div className="relative flex h-full flex-col gap-4 sm:flex-row sm:items-center sm:p-8">
+        <div className="relative h-4/5 basis-full sm:h-full">
+          {imageUrl && (
+            <Image
+              alt={name}
+              src={imageUrl}
+              fill
+              sizes="100vw"
+              style={{ objectFit: 'contain' }}
+            />
+          )}
         </div>
 
-        <p className="text-base text-center">{description}</p>
+        <p className="text-center text-base">{description}</p>
       </div>
     </div>
   )

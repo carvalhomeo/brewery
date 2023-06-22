@@ -1,7 +1,8 @@
-import Providers from '@/providers'
 import './globals.css'
+import Providers from '@/providers'
 import { Inter } from 'next/font/google'
 import { twMerge } from 'tailwind-merge'
+import { ReactNode } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -10,17 +11,14 @@ export const metadata = {
   description: 'List of favorite beers',
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={twMerge("text-slate-900 antialiased light", inter.className)}>
+    <html
+      lang="en"
+      className={twMerge('light text-slate-900 antialiased', inter.className)}
+    >
       <body className="min-h-screen antialiased">
-        <Providers>
-          {children}
-        </Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   )
