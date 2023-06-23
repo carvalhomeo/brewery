@@ -1,4 +1,9 @@
-[![Tests](https://github.com/carvalhomeo/brewery/actions/workflows/main.yml/badge.svg)](https://github.com/carvalhomeo/brewery/actions/workflows/main.yml)
+<div id="badges" align="center">
+
+[![Jest tests](https://github.com/carvalhomeo/brewery/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/carvalhomeo/brewery/actions/workflows/unit-tests.yml)
+&nbsp;
+[![Brewery](https://img.shields.io/endpoint?url=https://cloud.cypress.io/badge/detailed/yispjy/main&style=flat&logo=cypress)](https://cloud.cypress.io/projects/yispjy/runs)
+</div>
 
 </br>
 ## Getting Started
