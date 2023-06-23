@@ -23,6 +23,7 @@ const Beer = ({ beer, scrollRef, index }: BeerProps) => {
 
   return (
     <Link
+      data-testid={`beer-${id}`}
       className="h-full cursor-pointer snap-start"
       href={`details/${id}`}
       onClick={handleSelectBeer}
@@ -34,7 +35,10 @@ const Beer = ({ beer, scrollRef, index }: BeerProps) => {
             <Image alt={name} src={imageUrl} fill className="object-contain" />
           )}
         </div>
-        <h1 data-testid="beer-name" className="text-center text-3xl font-bold">
+        <h1
+          data-testid={`beer-name-${id}`}
+          className="text-center text-3xl font-bold"
+        >
           {name}
         </h1>
       </div>

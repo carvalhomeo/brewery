@@ -65,6 +65,7 @@ export default function Home() {
       )}
 
       <div
+        data-testid="beer-list"
         ref={scrollRef}
         className="flex snap-y snap-mandatory flex-col gap-4 overflow-scroll scroll-smooth scrollbar-hide"
       >

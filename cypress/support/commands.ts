@@ -30,6 +30,7 @@ declare namespace Cypress {
   interface Chainable {
     clickBtn(name: string): Chainable<void>
     isVisible(name: string, text?: string): Chainable<void>
+    isInvisible(name: string, text?: string): Chainable<void>
     checkStore(key: string, value: any): Chainable<void>
   }
 }
@@ -42,9 +43,18 @@ Cypress.Commands.add('isVisible', (name: string, text?: string) => {
   text
     ? cy
         .get(`[data-testid="${name}"]`)
-        .should('be.visible')
-        .and('have.text', text)
+        .should('have.text', text)
+        .and('be.visible')
     : cy.get(`[data-testid="${name}"]`).should('be.visible')
+})
+
+Cypress.Commands.add('isInvisible', (name: string, text?: string) => {
+  text
+    ? cy
+        .get(`[data-testid="${name}"]`)
+        .should('have.text', text)
+        .and('not.be.visible')
+    : cy.get(`[data-testid="${name}"]`).should('not.be.visible')
 })
 
 Cypress.Commands.add('checkStore', (key, value) => {

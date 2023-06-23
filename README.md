@@ -18,7 +18,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - Sorting in list view (Sort by name, type, year, etc.).
 - Filtering in list view (filter on type, year, etc.).
 - Add the user's comment / notes / rating.
-- Add tests (RTL, Cypress)
 - Auth w/Clerk
 - Add DB w/Prisma
 ```

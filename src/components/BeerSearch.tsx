@@ -28,12 +28,14 @@ const BeerSearch = ({ initialData }: BeerSearchProps) => {
         <div className="flex basis-full flex-row items-center justify-between gap-2 rounded-full border-2 border-blue-300 p-1">
           <Search width={20} height={20} className="ml-2" />
           <input
+            data-testid="search-input"
             type="text"
             className="basis-full focus:outline-none"
             value={value}
             onChange={(e) => setValue(e.target.value)}
           />
           <button
+            data-testid="clear-search"
             className="mr-2 flex items-center justify-center"
             onClick={() => setValue('')}
           >

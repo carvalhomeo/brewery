@@ -30,7 +30,10 @@ const BeerItem = ({ beer }: BeerItemProps) => {
   const allreadyInList = beerList.find((beer) => beer.id === id)
 
   return (
-    <div className="relative flex h-28 flex-row items-center justify-center gap-4 rounded-xl bg-blue-100 p-4 shadow sm:w-80 md:w-80 lg:w-80 xl:w-80">
+    <div
+      data-testid={`beer-item-${id}`}
+      className="relative flex h-28 flex-row items-center justify-center gap-4 rounded-xl bg-blue-100 p-4 shadow sm:w-80 md:w-80 lg:w-80 xl:w-80"
+    >
       <div className="relative h-20 w-5">
         {imageUrl && (
           <Image
@@ -43,12 +46,17 @@ const BeerItem = ({ beer }: BeerItemProps) => {
       </div>
 
       <div className="flex-auto">
-        <h1 className="text-lg font-bold">{formattedName}</h1>
-        <h2 className="text-md">{formattedTagline}</h2>
+        <h1 data-testid={`beer-item-${id}-name`} className="text-lg font-bold">
+          {formattedName}
+        </h1>
+        <h2 data-testid={`beer-item-${id}-tagline`} className="text-md">
+          {formattedTagline}
+        </h2>
       </div>
 
       {allreadyInList ? (
         <button
+          data-testid={`remove-beer-${id}`}
           className="h-7 place-content-center rounded-full"
           onClick={handleRemoveBeer}
         >
