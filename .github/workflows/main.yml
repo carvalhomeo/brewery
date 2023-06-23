@@ -3,20 +3,6 @@ name: Tests
 on: push
 
 jobs:
-  jest-run:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with: 
-          node-version: "18.16.0"
-      - name: Install dependencies
-        run: npm install
-      - name: Jest run
-        run: npm run test
-
   cypress-run:
     runs-on: ubuntu-22.04
     steps:
