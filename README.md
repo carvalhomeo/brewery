@@ -1,3 +1,6 @@
+[![Tests](https://github.com/carvalhomeo/brewery/actions/workflows/main.yml/badge.svg)](https://github.com/carvalhomeo/brewery/actions/workflows/main.yml)
+
+</br>
 ## Getting Started
 
 Run the development server:
